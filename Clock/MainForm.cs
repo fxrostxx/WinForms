@@ -15,23 +15,36 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
+			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 		}
+		private void SetVisibility(bool visible)
+		{
+			CheckBoxShowDate.Visible = visible;
+			CheckBoxShowWeekday.Visible = visible;
+			ButtonHideControls.Visible = visible;
+			this.ShowInTaskbar = visible;
+			this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
+			this.TransparencyKey = visible ? Color.Empty : this.BackColor;
+			this.TopMost = visible ? false : true;
+		}
 		private void Timer_Tick(object sender, EventArgs e)
 		{
-			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
 			if (CheckBoxShowDate.Checked) TimeLabel.Text += $"\n{DateTime.Now.ToString("dd.MM.yyyy")}";
 			if (CheckBoxShowWeekday.Checked && CheckBoxShowDate.Checked)
 				TimeLabel.Text += $" {DateTime.Now.ToString("ddd")}";
 			else if (CheckBoxShowWeekday.Checked) TimeLabel.Text += $"\n{DateTime.Now.ToString("ddd")}";
+			NotifyIcon.Text = TimeLabel.Text;
 		}
 		private void ButtonHideControls_Click(object sender, EventArgs e)
 		{
-			CheckBoxShowDate.Visible = false;
-			CheckBoxShowWeekday.Visible = false;
-			ButtonHideControls.Visible = false;
-			this.ShowInTaskbar = false;
+			SetVisibility(false);
+		}
+		private void TimeLabel_MouseHover(object sender, EventArgs e)
+		{
+			SetVisibility(true);
 		}
 	}
 }
