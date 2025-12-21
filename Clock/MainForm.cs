@@ -15,7 +15,11 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
-			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+			this.StartPosition = FormStartPosition.Manual;
+			Point pt = Screen.PrimaryScreen.WorkingArea.Location;
+			pt.Offset(Screen.PrimaryScreen.WorkingArea.Width - this.Width, 0);
+			this.Location = pt;
+			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 		}
@@ -23,6 +27,7 @@ namespace Clock
 		{
 			CheckBoxShowDate.Visible = visible;
 			CheckBoxShowWeekday.Visible = visible;
+			CheckBoxShowSeconds.Visible = visible;
 			ButtonHideControls.Visible = visible;
 			this.ShowInTaskbar = visible;
 			this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
@@ -31,7 +36,8 @@ namespace Clock
 		}
 		private void Timer_Tick(object sender, EventArgs e)
 		{
-			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
+			if (CheckBoxShowSeconds.Checked) TimeLabel.Text += DateTime.Now.ToString(":ss");
 			if (CheckBoxShowDate.Checked) TimeLabel.Text += $"\n{DateTime.Now.ToString("dd.MM.yyyy")}";
 			if (CheckBoxShowWeekday.Checked && CheckBoxShowDate.Checked)
 				TimeLabel.Text += $" {DateTime.Now.ToString("ddd")}";

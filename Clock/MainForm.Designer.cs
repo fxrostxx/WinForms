@@ -36,6 +36,7 @@
 			this.CheckBoxShowWeekday = new System.Windows.Forms.CheckBox();
 			this.ButtonHideControls = new System.Windows.Forms.Button();
 			this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.CheckBoxShowSeconds = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// TimeLabel
@@ -48,6 +49,7 @@
 			this.TimeLabel.Size = new System.Drawing.Size(315, 60);
 			this.TimeLabel.TabIndex = 0;
 			this.TimeLabel.Text = "CurrentTime";
+			this.TimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.TimeLabel.MouseHover += new System.EventHandler(this.TimeLabel_MouseHover);
 			// 
 			// Timer
@@ -60,7 +62,7 @@
 			// 
 			this.CheckBoxShowDate.AutoSize = true;
 			this.CheckBoxShowDate.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CheckBoxShowDate.Location = new System.Drawing.Point(22, 149);
+			this.CheckBoxShowDate.Location = new System.Drawing.Point(22, 192);
 			this.CheckBoxShowDate.Name = "CheckBoxShowDate";
 			this.CheckBoxShowDate.Size = new System.Drawing.Size(167, 36);
 			this.CheckBoxShowDate.TabIndex = 1;
@@ -71,7 +73,7 @@
 			// 
 			this.CheckBoxShowWeekday.AutoSize = true;
 			this.CheckBoxShowWeekday.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CheckBoxShowWeekday.Location = new System.Drawing.Point(22, 191);
+			this.CheckBoxShowWeekday.Location = new System.Drawing.Point(22, 234);
 			this.CheckBoxShowWeekday.Name = "CheckBoxShowWeekday";
 			this.CheckBoxShowWeekday.Size = new System.Drawing.Size(220, 36);
 			this.CheckBoxShowWeekday.TabIndex = 2;
@@ -81,7 +83,7 @@
 			// ButtonHideControls
 			// 
 			this.ButtonHideControls.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.ButtonHideControls.Location = new System.Drawing.Point(22, 233);
+			this.ButtonHideControls.Location = new System.Drawing.Point(22, 278);
 			this.ButtonHideControls.Name = "ButtonHideControls";
 			this.ButtonHideControls.Size = new System.Drawing.Size(100, 54);
 			this.ButtonHideControls.TabIndex = 3;
@@ -95,11 +97,23 @@
 			this.NotifyIcon.Text = "Clock";
 			this.NotifyIcon.Visible = true;
 			// 
+			// CheckBoxShowSeconds
+			// 
+			this.CheckBoxShowSeconds.AutoSize = true;
+			this.CheckBoxShowSeconds.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CheckBoxShowSeconds.Location = new System.Drawing.Point(22, 150);
+			this.CheckBoxShowSeconds.Name = "CheckBoxShowSeconds";
+			this.CheckBoxShowSeconds.Size = new System.Drawing.Size(217, 36);
+			this.CheckBoxShowSeconds.TabIndex = 4;
+			this.CheckBoxShowSeconds.Text = "Show seconds";
+			this.CheckBoxShowSeconds.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(431, 295);
+			this.ClientSize = new System.Drawing.Size(431, 344);
+			this.Controls.Add(this.CheckBoxShowSeconds);
 			this.Controls.Add(this.ButtonHideControls);
 			this.Controls.Add(this.CheckBoxShowWeekday);
 			this.Controls.Add(this.CheckBoxShowDate);
@@ -122,6 +136,7 @@
 		private System.Windows.Forms.CheckBox CheckBoxShowWeekday;
 		private System.Windows.Forms.Button ButtonHideControls;
 		private System.Windows.Forms.NotifyIcon NotifyIcon;
+		private System.Windows.Forms.CheckBox CheckBoxShowSeconds;
 	}
 }
 
