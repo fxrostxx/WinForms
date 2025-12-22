@@ -31,14 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.TimeLabel = new System.Windows.Forms.Label();
-			this.Timer = new System.Windows.Forms.Timer(this.components);
-			this.CheckBoxShowDate = new System.Windows.Forms.CheckBox();
-			this.CheckBoxShowWeekday = new System.Windows.Forms.CheckBox();
-			this.ButtonHideControls = new System.Windows.Forms.Button();
-			this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-			this.CheckBoxShowSeconds = new System.Windows.Forms.CheckBox();
 			this.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.tsmiTopmost = new System.Windows.Forms.ToolStripMenuItem();
+			this.tsmiShowControls = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiShowSeconds = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiShowDate = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +51,12 @@
 			this.tsmiAutoStartup = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
 			this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
-			this.tsmiShowControls = new System.Windows.Forms.ToolStripMenuItem();
+			this.Timer = new System.Windows.Forms.Timer(this.components);
+			this.CheckBoxShowDate = new System.Windows.Forms.CheckBox();
+			this.CheckBoxShowWeekday = new System.Windows.Forms.CheckBox();
+			this.ButtonHideControls = new System.Windows.Forms.Button();
+			this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.CheckBoxShowSeconds = new System.Windows.Forms.CheckBox();
 			this.ContextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -72,64 +72,6 @@
 			this.TimeLabel.TabIndex = 0;
 			this.TimeLabel.Text = "CurrentTime";
 			this.TimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.TimeLabel.MouseHover += new System.EventHandler(this.TimeLabel_MouseHover);
-			// 
-			// Timer
-			// 
-			this.Timer.Enabled = true;
-			this.Timer.Interval = 1000;
-			this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
-			// 
-			// CheckBoxShowDate
-			// 
-			this.CheckBoxShowDate.AutoSize = true;
-			this.CheckBoxShowDate.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CheckBoxShowDate.Location = new System.Drawing.Point(22, 184);
-			this.CheckBoxShowDate.Name = "CheckBoxShowDate";
-			this.CheckBoxShowDate.Size = new System.Drawing.Size(167, 36);
-			this.CheckBoxShowDate.TabIndex = 1;
-			this.CheckBoxShowDate.Text = "Show date";
-			this.CheckBoxShowDate.UseVisualStyleBackColor = true;
-			// 
-			// CheckBoxShowWeekday
-			// 
-			this.CheckBoxShowWeekday.AutoSize = true;
-			this.CheckBoxShowWeekday.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CheckBoxShowWeekday.Location = new System.Drawing.Point(22, 226);
-			this.CheckBoxShowWeekday.Name = "CheckBoxShowWeekday";
-			this.CheckBoxShowWeekday.Size = new System.Drawing.Size(220, 36);
-			this.CheckBoxShowWeekday.TabIndex = 2;
-			this.CheckBoxShowWeekday.Text = "Show weekday";
-			this.CheckBoxShowWeekday.UseVisualStyleBackColor = true;
-			// 
-			// ButtonHideControls
-			// 
-			this.ButtonHideControls.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.ButtonHideControls.Location = new System.Drawing.Point(22, 268);
-			this.ButtonHideControls.Name = "ButtonHideControls";
-			this.ButtonHideControls.Size = new System.Drawing.Size(100, 54);
-			this.ButtonHideControls.TabIndex = 3;
-			this.ButtonHideControls.Text = "Hide controls";
-			this.ButtonHideControls.UseVisualStyleBackColor = true;
-			this.ButtonHideControls.Click += new System.EventHandler(this.ButtonHideControls_Click);
-			// 
-			// NotifyIcon
-			// 
-			this.NotifyIcon.ContextMenuStrip = this.ContextMenuStrip;
-			this.NotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyIcon.Icon")));
-			this.NotifyIcon.Text = "Clock";
-			this.NotifyIcon.Visible = true;
-			// 
-			// CheckBoxShowSeconds
-			// 
-			this.CheckBoxShowSeconds.AutoSize = true;
-			this.CheckBoxShowSeconds.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CheckBoxShowSeconds.Location = new System.Drawing.Point(22, 142);
-			this.CheckBoxShowSeconds.Name = "CheckBoxShowSeconds";
-			this.CheckBoxShowSeconds.Size = new System.Drawing.Size(217, 36);
-			this.CheckBoxShowSeconds.TabIndex = 4;
-			this.CheckBoxShowSeconds.Text = "Show seconds";
-			this.CheckBoxShowSeconds.UseVisualStyleBackColor = true;
 			// 
 			// ContextMenuStrip
 			// 
@@ -161,6 +103,15 @@
 			this.tsmiTopmost.Name = "tsmiTopmost";
 			this.tsmiTopmost.Size = new System.Drawing.Size(210, 24);
 			this.tsmiTopmost.Text = "Topmost";
+			this.tsmiTopmost.Click += new System.EventHandler(this.tsmiTopmost_Click);
+			// 
+			// tsmiShowControls
+			// 
+			this.tsmiShowControls.CheckOnClick = true;
+			this.tsmiShowControls.Name = "tsmiShowControls";
+			this.tsmiShowControls.Size = new System.Drawing.Size(210, 24);
+			this.tsmiShowControls.Text = "Show controls";
+			this.tsmiShowControls.CheckedChanged += new System.EventHandler(this.tsmiShowControls_CheckedChanged);
 			// 
 			// toolStripSeparator1
 			// 
@@ -173,6 +124,7 @@
 			this.tsmiShowSeconds.Name = "tsmiShowSeconds";
 			this.tsmiShowSeconds.Size = new System.Drawing.Size(210, 24);
 			this.tsmiShowSeconds.Text = "Show seconds";
+			this.tsmiShowSeconds.CheckedChanged += new System.EventHandler(this.tsmiShowSeconds_CheckedChanged);
 			// 
 			// tsmiShowDate
 			// 
@@ -180,6 +132,7 @@
 			this.tsmiShowDate.Name = "tsmiShowDate";
 			this.tsmiShowDate.Size = new System.Drawing.Size(210, 24);
 			this.tsmiShowDate.Text = "Show date";
+			this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
 			// 
 			// tsmiShowWeekday
 			// 
@@ -187,6 +140,7 @@
 			this.tsmiShowWeekday.Name = "tsmiShowWeekday";
 			this.tsmiShowWeekday.Size = new System.Drawing.Size(210, 24);
 			this.tsmiShowWeekday.Text = "Show weekday";
+			this.tsmiShowWeekday.CheckedChanged += new System.EventHandler(this.tsmiShowWeekday_CheckedChanged);
 			// 
 			// toolStripSeparator2
 			// 
@@ -223,13 +177,13 @@
 			// tsmiForegroundColor
 			// 
 			this.tsmiForegroundColor.Name = "tsmiForegroundColor";
-			this.tsmiForegroundColor.Size = new System.Drawing.Size(224, 26);
+			this.tsmiForegroundColor.Size = new System.Drawing.Size(209, 26);
 			this.tsmiForegroundColor.Text = "Foreground color";
 			// 
 			// tsmiBackgroundColor
 			// 
 			this.tsmiBackgroundColor.Name = "tsmiBackgroundColor";
-			this.tsmiBackgroundColor.Size = new System.Drawing.Size(224, 26);
+			this.tsmiBackgroundColor.Size = new System.Drawing.Size(209, 26);
 			this.tsmiBackgroundColor.Text = "Background color";
 			// 
 			// toolStripSeparator4
@@ -265,13 +219,67 @@
 			this.tsmiExit.Name = "tsmiExit";
 			this.tsmiExit.Size = new System.Drawing.Size(210, 24);
 			this.tsmiExit.Text = "Exit";
+			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
-			// tsmiShowControls
+			// Timer
 			// 
-			this.tsmiShowControls.CheckOnClick = true;
-			this.tsmiShowControls.Name = "tsmiShowControls";
-			this.tsmiShowControls.Size = new System.Drawing.Size(210, 24);
-			this.tsmiShowControls.Text = "Show controls";
+			this.Timer.Enabled = true;
+			this.Timer.Interval = 1000;
+			this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+			// 
+			// CheckBoxShowDate
+			// 
+			this.CheckBoxShowDate.AutoSize = true;
+			this.CheckBoxShowDate.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CheckBoxShowDate.Location = new System.Drawing.Point(22, 184);
+			this.CheckBoxShowDate.Name = "CheckBoxShowDate";
+			this.CheckBoxShowDate.Size = new System.Drawing.Size(167, 36);
+			this.CheckBoxShowDate.TabIndex = 1;
+			this.CheckBoxShowDate.Text = "Show date";
+			this.CheckBoxShowDate.UseVisualStyleBackColor = true;
+			this.CheckBoxShowDate.CheckedChanged += new System.EventHandler(this.CheckBoxShowDate_CheckedChanged);
+			// 
+			// CheckBoxShowWeekday
+			// 
+			this.CheckBoxShowWeekday.AutoSize = true;
+			this.CheckBoxShowWeekday.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CheckBoxShowWeekday.Location = new System.Drawing.Point(22, 226);
+			this.CheckBoxShowWeekday.Name = "CheckBoxShowWeekday";
+			this.CheckBoxShowWeekday.Size = new System.Drawing.Size(220, 36);
+			this.CheckBoxShowWeekday.TabIndex = 2;
+			this.CheckBoxShowWeekday.Text = "Show weekday";
+			this.CheckBoxShowWeekday.UseVisualStyleBackColor = true;
+			this.CheckBoxShowWeekday.CheckedChanged += new System.EventHandler(this.CheckBoxShowWeekday_CheckedChanged);
+			// 
+			// ButtonHideControls
+			// 
+			this.ButtonHideControls.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.ButtonHideControls.Location = new System.Drawing.Point(22, 268);
+			this.ButtonHideControls.Name = "ButtonHideControls";
+			this.ButtonHideControls.Size = new System.Drawing.Size(100, 54);
+			this.ButtonHideControls.TabIndex = 3;
+			this.ButtonHideControls.Text = "Hide controls";
+			this.ButtonHideControls.UseVisualStyleBackColor = true;
+			this.ButtonHideControls.Click += new System.EventHandler(this.ButtonHideControls_Click);
+			// 
+			// NotifyIcon
+			// 
+			this.NotifyIcon.ContextMenuStrip = this.ContextMenuStrip;
+			this.NotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyIcon.Icon")));
+			this.NotifyIcon.Text = "Clock";
+			this.NotifyIcon.Visible = true;
+			// 
+			// CheckBoxShowSeconds
+			// 
+			this.CheckBoxShowSeconds.AutoSize = true;
+			this.CheckBoxShowSeconds.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CheckBoxShowSeconds.Location = new System.Drawing.Point(22, 142);
+			this.CheckBoxShowSeconds.Name = "CheckBoxShowSeconds";
+			this.CheckBoxShowSeconds.Size = new System.Drawing.Size(217, 36);
+			this.CheckBoxShowSeconds.TabIndex = 4;
+			this.CheckBoxShowSeconds.Text = "Show seconds";
+			this.CheckBoxShowSeconds.UseVisualStyleBackColor = true;
+			this.CheckBoxShowSeconds.CheckedChanged += new System.EventHandler(this.CheckBoxShowSeconds_CheckedChanged);
 			// 
 			// MainForm
 			// 
