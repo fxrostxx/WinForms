@@ -15,7 +15,7 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
-			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 		}
@@ -31,7 +31,8 @@ namespace Clock
 		}
 		private void Timer_Tick(object sender, EventArgs e)
 		{
-			TimeLabel.Text = DateTime.Now.ToString("HH:mm:ss");
+			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
+			if (CheckBoxShowSeconds.Checked) TimeLabel.Text += DateTime.Now.ToString(":ss");
 			if (CheckBoxShowDate.Checked) TimeLabel.Text += $"\n{DateTime.Now.ToString("dd.MM.yyyy")}";
 			if (CheckBoxShowWeekday.Checked && CheckBoxShowDate.Checked)
 				TimeLabel.Text += $" {DateTime.Now.ToString("ddd")}";
