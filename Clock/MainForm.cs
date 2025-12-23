@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,13 @@ namespace Clock
 			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
+			FGColorDialog.FullOpen = BGColorDialog.FullOpen = true;
+			FGColorDialog.Color = TimeLabel.ForeColor;
+			BGColorDialog.Color = TimeLabel.BackColor;
+			FontDialog.Font = TimeLabel.Font;
+			FileDialog.Title = "Select custom font file";
+			FileDialog.Filter = "TrueType font files (*.ttf)|*.ttf| OpenType font files (*.otf)|*.otf| All files (*.*)|*.*";
+			FileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 			SetVisibility(false);
 		}
 		private void SetVisibility(bool visible)
@@ -65,5 +74,29 @@ namespace Clock
 		private void CheckBoxShowWeekday_CheckedChanged(object sender, EventArgs e) =>
 			tsmiShowWeekday.Checked = CheckBoxShowWeekday.Checked;
 		private void tsmiExit_Click(object sender, EventArgs e) => this.Close();
+		private void tsmiForegroundColor_Click(object sender, EventArgs e)
+		{
+			if (FGColorDialog.ShowDialog() == DialogResult.Cancel) return;
+			TimeLabel.ForeColor = FGColorDialog.Color;
+		}
+		private void tsmiBackgroundColor_Click(object sender, EventArgs e)
+		{
+			if (BGColorDialog.ShowDialog() == DialogResult.Cancel) return;
+			TimeLabel.BackColor = BGColorDialog.Color;
+		}
+		private void tsmiSelectSystemFont_Click(object sender, EventArgs e)
+		{
+			if (FontDialog.ShowDialog() == DialogResult.Cancel) return;
+			TimeLabel.Font = FontDialog.Font;
+		}
+		private void tsmiSelectCustomFont_Click(object sender, EventArgs e)
+		{
+			if (FileDialog.ShowDialog() == DialogResult.Cancel) return;
+			PrivateFontCollection privateFonts = new PrivateFontCollection();
+			privateFonts.AddFontFile(FileDialog.FileName);
+			FontFamily fontFamily = privateFonts.Families[0];
+			Font customFont = new Font(fontFamily, TimeLabel.Font.Size, TimeLabel.Font.Style);
+			TimeLabel.Font = customFont;
+		}
 	}
 }
