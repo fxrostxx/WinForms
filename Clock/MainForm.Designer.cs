@@ -164,6 +164,7 @@
 			this.tsmiSelectFont.Name = "tsmiSelectFont";
 			this.tsmiSelectFont.Size = new System.Drawing.Size(210, 24);
 			this.tsmiSelectFont.Text = "Select font";
+			this.tsmiSelectFont.Click += new System.EventHandler(this.tsmiSelectFont_Click);
 			// 
 			// tsmiSelectColor
 			// 

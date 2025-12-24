@@ -12,6 +12,7 @@ namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		FontDialog fontDialog;
 		ColorDialog FGColorDialog;
 		ColorDialog BGColorDialog;
 		public MainForm()
@@ -23,6 +24,7 @@ namespace Clock
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			SetVisibility(false);
+			fontDialog = new FontDialog();
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
 		}
@@ -80,6 +82,11 @@ namespace Clock
 		{
 			BGColorDialog.ShowDialog();
 			TimeLabel.BackColor = BGColorDialog.Color;
+		}
+		private void tsmiSelectFont_Click(object sender, EventArgs e)
+		{
+			fontDialog.Location = new Point(this.Location.X - fontDialog.Width - 10, this.Location.Y);
+			fontDialog.ShowDialog();
 		}
 	}
 }

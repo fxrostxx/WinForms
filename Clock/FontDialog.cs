@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace Clock
+{
+	public partial class FontDialog : Form
+	{
+		public FontDialog()
+		{
+			InitializeComponent();
+		}
+		private void FontDialog_Load(object sender, EventArgs e)
+		{
+			LoadFonts("*.otf");
+			LoadFonts("*.ttf");
+		}
+		void LoadFonts(string extension)
+		{
+			string currentDir = Application.StartupPath;
+			Directory.SetCurrentDirectory($"{currentDir}\\..\\..\\Fonts");
+			//MessageBox.Show
+			//	(
+			//	this,
+			//	Directory.GetCurrentDirectory(),
+			//	"Select folder",
+			//	MessageBoxButtons.OK,
+			//	MessageBoxIcon.Information
+			//	);
+			string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), extension);
+			for (int i = 0; i < files.Length; ++i) comboBoxFont.Items.Add(files[i].Split('\\').Last());
+		}
+	}
+}
