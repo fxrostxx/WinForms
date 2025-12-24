@@ -14,6 +14,7 @@ namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		PrivateFontCollection privateFonts;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -92,7 +93,7 @@ namespace Clock
 		private void tsmiSelectCustomFont_Click(object sender, EventArgs e)
 		{
 			if (FileDialog.ShowDialog() == DialogResult.Cancel) return;
-			PrivateFontCollection privateFonts = new PrivateFontCollection();
+			privateFonts = new PrivateFontCollection();
 			privateFonts.AddFontFile(FileDialog.FileName);
 			FontFamily fontFamily = privateFonts.Families[0];
 			Font customFont = new Font(fontFamily, TimeLabel.Font.Size, TimeLabel.Font.Style);
