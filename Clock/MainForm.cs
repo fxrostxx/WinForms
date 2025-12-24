@@ -12,13 +12,19 @@ namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		ColorDialog FGColorDialog;
+		ColorDialog BGColorDialog;
 		public MainForm()
 		{
 			InitializeComponent();
+			this.StartPosition = FormStartPosition.Manual;
+			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2, -5);
 			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			SetVisibility(false);
+			FGColorDialog = new ColorDialog();
+			BGColorDialog = new ColorDialog();
 		}
 		private void SetVisibility(bool visible)
 		{
@@ -65,5 +71,15 @@ namespace Clock
 		private void CheckBoxShowWeekday_CheckedChanged(object sender, EventArgs e) =>
 			tsmiShowWeekday.Checked = CheckBoxShowWeekday.Checked;
 		private void tsmiExit_Click(object sender, EventArgs e) => this.Close();
+		private void tsmiForegroundColor_Click(object sender, EventArgs e)
+		{
+			FGColorDialog.ShowDialog();
+			TimeLabel.ForeColor = FGColorDialog.Color;
+		}
+		private void tsmiBackgroundColor_Click(object sender, EventArgs e)
+		{
+			BGColorDialog.ShowDialog();
+			TimeLabel.BackColor = BGColorDialog.Color;
+		}
 	}
 }
