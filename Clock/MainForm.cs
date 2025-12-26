@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace Clock
 {
@@ -89,6 +90,14 @@ namespace Clock
 			fontDialog.Location = new Point(this.Location.X - fontDialog.Width - 10, this.Location.Y);
 			fontDialog.Font = TimeLabel.Font;
 			if (fontDialog.ShowDialog() == DialogResult.OK) TimeLabel.Font = fontDialog.Font;
+		}
+		private void tsmiAutoStartup_CheckedChanged(object sender, EventArgs e)
+		{
+			string key_name = "ClockCS";
+			RegistryKey rk = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+			if (tsmiAutoStartup.Checked) rk.SetValue(key_name, Application.ExecutablePath);
+			else rk.DeleteValue(key_name, false);
+			rk.Dispose();
 		}
 	}
 }
