@@ -24,6 +24,7 @@ namespace Clock
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			SetVisibility(false);
+			this.TopMost = tsmiTopmost.Checked = true;
 			fontDialog = new FontDialog();
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
@@ -75,18 +76,19 @@ namespace Clock
 		private void tsmiExit_Click(object sender, EventArgs e) => this.Close();
 		private void tsmiForegroundColor_Click(object sender, EventArgs e)
 		{
-			FGColorDialog.ShowDialog();
-			TimeLabel.ForeColor = FGColorDialog.Color;
+			if (FGColorDialog.ShowDialog() == DialogResult.OK)
+				TimeLabel.ForeColor = FGColorDialog.Color;
 		}
 		private void tsmiBackgroundColor_Click(object sender, EventArgs e)
 		{
-			BGColorDialog.ShowDialog();
-			TimeLabel.BackColor = BGColorDialog.Color;
+			if (BGColorDialog.ShowDialog() == DialogResult.OK)
+				TimeLabel.BackColor = BGColorDialog.Color;
 		}
 		private void tsmiSelectFont_Click(object sender, EventArgs e)
 		{
 			fontDialog.Location = new Point(this.Location.X - fontDialog.Width - 10, this.Location.Y);
-			fontDialog.ShowDialog();
+			fontDialog.Font = TimeLabel.Font;
+			if (fontDialog.ShowDialog() == DialogResult.OK) TimeLabel.Font = fontDialog.Font;
 		}
 	}
 }

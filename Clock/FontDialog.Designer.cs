@@ -42,6 +42,7 @@
 			this.comboBoxFont.Name = "comboBoxFont";
 			this.comboBoxFont.Size = new System.Drawing.Size(625, 24);
 			this.comboBoxFont.TabIndex = 0;
+			this.comboBoxFont.SelectedIndexChanged += new System.EventHandler(this.comboBoxFont_SelectedIndexChanged);
 			// 
 			// labelExample
 			// 
@@ -49,7 +50,7 @@
 			this.labelExample.Font = new System.Drawing.Font("Arial", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelExample.Location = new System.Drawing.Point(12, 72);
 			this.labelExample.Name = "labelExample";
-			this.labelExample.Size = new System.Drawing.Size(237, 61);
+			this.labelExample.Size = new System.Drawing.Size(229, 60);
 			this.labelExample.TabIndex = 1;
 			this.labelExample.Text = "Example";
 			// 
@@ -62,6 +63,7 @@
 			this.buttonOK.TabIndex = 2;
 			this.buttonOK.Text = "OK";
 			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
 			// 
 			// buttonCancel
 			// 
