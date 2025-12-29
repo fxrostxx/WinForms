@@ -17,7 +17,6 @@ namespace Clock
 		FontDialog fontDialog;
 		ColorDialog FGColorDialog;
 		ColorDialog BGColorDialog;
-		readonly string settingsFilePath = Application.StartupPath + "\\settings.ini";
 		public MainForm()
 		{
 			InitializeComponent();
@@ -26,27 +25,7 @@ namespace Clock
 			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			if (File.Exists(settingsFilePath))
-			{
-				string[] settings = File.ReadAllLines(settingsFilePath);
-				this.TopMost = tsmiTopmost.Checked = Convert.ToBoolean(settings[0]);
-				tsmiShowControls.Checked = Convert.ToBoolean(settings[1]);
-				SetVisibility(tsmiShowControls.Checked);
-				tsmiShowSeconds.Checked = Convert.ToBoolean(settings[2]);
-				tsmiShowDate.Checked = Convert.ToBoolean(settings[3]);
-				tsmiShowWeekday.Checked = Convert.ToBoolean(settings[4]);
-				tsmiShowConsole.Checked = Convert.ToBoolean(settings[5]);
-				//TimeLabel.Font.Name = settings[6];
-				//TimeLabel.Font.Size = settings[7];
-				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(settings[8]));
-				TimeLabel.BackColor = Color.FromArgb(Convert.ToInt32(settings[9]));
-				tsmiAutoStartup.Checked = Convert.ToBoolean(settings[10]);
-			}
-			else
-			{
-				SetVisibility(false);
-				this.TopMost = tsmiTopmost.Checked = true;
-			}
+			LoadSettings();
 			fontDialog = new FontDialog();
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
@@ -60,6 +39,54 @@ namespace Clock
 			this.ShowInTaskbar = visible;
 			this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
 			this.TransparencyKey = visible ? Color.Empty : this.BackColor;
+		}
+		private void SaveSettings()
+		{
+			Directory.SetCurrentDirectory(Application.StartupPath + "\\..\\..\\");
+			StreamWriter writer = new StreamWriter("settings.ini");
+			writer.WriteLine(this.Location.X);
+			writer.WriteLine(this.Location.Y);
+			writer.WriteLine(this.TopMost);
+			writer.WriteLine(tsmiShowControls.Checked);
+			writer.WriteLine(tsmiShowSeconds.Checked);
+			writer.WriteLine(tsmiShowDate.Checked);
+			writer.WriteLine(tsmiShowWeekday.Checked);
+			writer.WriteLine(tsmiShowConsole.Checked);
+			writer.WriteLine(TimeLabel.Font.Name);
+			writer.WriteLine(TimeLabel.Font.Size);
+			writer.WriteLine(TimeLabel.ForeColor.ToArgb());
+			writer.WriteLine(TimeLabel.BackColor.ToArgb());
+			writer.WriteLine(tsmiAutoStartup.Checked);
+			writer.Close();
+		}
+		void LoadSettings()
+		{
+			Directory.SetCurrentDirectory(Application.StartupPath + "\\..\\..\\");
+			if (File.Exists("settings.ini"))
+			{
+				StreamReader reader = new StreamReader("settings.ini");
+				this.Location = new Point(Convert.ToInt32(reader.ReadLine()), Convert.ToInt32(reader.ReadLine()));
+				this.TopMost = tsmiTopmost.Checked = Convert.ToBoolean(reader.ReadLine());
+				tsmiShowControls.Checked = Convert.ToBoolean(reader.ReadLine());
+				SetVisibility(tsmiShowControls.Checked);
+				tsmiShowSeconds.Checked = Convert.ToBoolean(reader.ReadLine());
+				tsmiShowDate.Checked = Convert.ToBoolean(reader.ReadLine());
+				tsmiShowWeekday.Checked = Convert.ToBoolean(reader.ReadLine());
+				tsmiShowConsole.Checked = Convert.ToBoolean(reader.ReadLine());
+				//TimeLabel.Font.Name = reader.ReadLine();
+				//TimeLabel.Font.Size = reader.ReadLine();
+				reader.ReadLine();
+				reader.ReadLine();
+				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
+				TimeLabel.BackColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
+				tsmiAutoStartup.Checked = Convert.ToBoolean(reader.ReadLine());
+				reader.Close();
+			}
+			else
+			{
+				SetVisibility(false);
+				this.TopMost = tsmiTopmost.Checked = true;
+			}
 		}
 		private void Timer_Tick(object sender, EventArgs e)
 		{
@@ -122,8 +149,7 @@ namespace Clock
 		}
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			string settings = $"{this.TopMost}\n{tsmiShowControls.Checked}\n{tsmiShowSeconds.Checked}\n{tsmiShowDate.Checked}\n{tsmiShowWeekday.Checked}\n{tsmiShowConsole.Checked}\n{TimeLabel.Font.Name}\n{TimeLabel.Font.Size}\n{TimeLabel.ForeColor.ToArgb()}\n{TimeLabel.BackColor.ToArgb()}\n{tsmiAutoStartup.Checked}";
-			File.WriteAllText(settingsFilePath, settings);
+			SaveSettings();
 		}
 	}
 }
