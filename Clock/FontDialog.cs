@@ -15,6 +15,7 @@ namespace Clock
 	public partial class FontDialog : Form
 	{
 		public Font Font { get; set; }
+		public string Filename { get; set; }
 		int lastChosenIndex;
 		public FontDialog()
 		{
@@ -23,6 +24,16 @@ namespace Clock
 			LoadFonts("*.otf");
 			LoadFonts("*.ttf");
 			comboBoxFont.SelectedIndex = lastChosenIndex;
+		}
+		public FontDialog(string font_name, string font_size) : this()
+		{
+			Filename = font_name;
+			if (font_size != null) numericUpDownFontSize.Value = Convert.ToDecimal(font_size);
+			lastChosenIndex = comboBoxFont.FindString(font_name);
+			if (lastChosenIndex == -1) lastChosenIndex = 0;
+			comboBoxFont.SelectedIndex = lastChosenIndex;
+			SetFont();
+			Font = labelExample.Font;
 		}
 		private void FontDialog_Load(object sender, EventArgs e)
 		{
@@ -56,6 +67,7 @@ namespace Clock
 		private void buttonOK_Click(object sender, EventArgs e)
 		{
 			this.Font = labelExample.Font;
+			this.Filename = comboBoxFont.SelectedItem.ToString();
 			this.lastChosenIndex = comboBoxFont.SelectedIndex;
 		}
 		private void buttonCancel_Click(object sender, EventArgs e)

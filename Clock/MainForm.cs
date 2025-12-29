@@ -25,10 +25,10 @@ namespace Clock
 			TimeLabel.Text = DateTime.Now.ToString("HH:mm");
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			LoadSettings();
 			fontDialog = new FontDialog();
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
+			LoadSettings();
 		}
 		private void SetVisibility(bool visible)
 		{
@@ -52,7 +52,7 @@ namespace Clock
 			writer.WriteLine(tsmiShowDate.Checked);
 			writer.WriteLine(tsmiShowWeekday.Checked);
 			writer.WriteLine(tsmiShowConsole.Checked);
-			writer.WriteLine(TimeLabel.Font.Name);
+			writer.WriteLine(fontDialog.Filename);
 			writer.WriteLine(TimeLabel.Font.Size);
 			writer.WriteLine(TimeLabel.ForeColor.ToArgb());
 			writer.WriteLine(TimeLabel.BackColor.ToArgb());
@@ -73,10 +73,8 @@ namespace Clock
 				tsmiShowDate.Checked = Convert.ToBoolean(reader.ReadLine());
 				tsmiShowWeekday.Checked = Convert.ToBoolean(reader.ReadLine());
 				tsmiShowConsole.Checked = Convert.ToBoolean(reader.ReadLine());
-				//TimeLabel.Font.Name = reader.ReadLine();
-				//TimeLabel.Font.Size = reader.ReadLine();
-				reader.ReadLine();
-				reader.ReadLine();
+				fontDialog = new FontDialog(reader.ReadLine(), reader.ReadLine());
+				TimeLabel.Font = fontDialog.Font;
 				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				TimeLabel.BackColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				tsmiAutoStartup.Checked = Convert.ToBoolean(reader.ReadLine());
