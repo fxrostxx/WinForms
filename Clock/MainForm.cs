@@ -38,8 +38,8 @@ namespace Clock
 				tsmiShowConsole.Checked = Convert.ToBoolean(settings[5]);
 				//TimeLabel.Font.Name = settings[6];
 				//TimeLabel.Font.Size = settings[7];
-				//TimeLabel.ForeColor = settings[8];
-				//TimeLabel.BackColor = settings[9];
+				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(settings[8]));
+				TimeLabel.BackColor = Color.FromArgb(Convert.ToInt32(settings[9]));
 				tsmiAutoStartup.Checked = Convert.ToBoolean(settings[10]);
 			}
 			else
@@ -122,7 +122,7 @@ namespace Clock
 		}
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			string settings = $"{this.TopMost}\n{tsmiShowControls.Checked}\n{tsmiShowSeconds.Checked}\n{tsmiShowDate.Checked}\n{tsmiShowWeekday.Checked}\n{tsmiShowConsole.Checked}\n{TimeLabel.Font.Name}\n{TimeLabel.Font.Size}\n{TimeLabel.ForeColor}\n{TimeLabel.BackColor}\n{tsmiAutoStartup.Checked}";
+			string settings = $"{this.TopMost}\n{tsmiShowControls.Checked}\n{tsmiShowSeconds.Checked}\n{tsmiShowDate.Checked}\n{tsmiShowWeekday.Checked}\n{tsmiShowConsole.Checked}\n{TimeLabel.Font.Name}\n{TimeLabel.Font.Size}\n{TimeLabel.ForeColor.ToArgb()}\n{TimeLabel.BackColor.ToArgb()}\n{tsmiAutoStartup.Checked}";
 			File.WriteAllText(settingsFilePath, settings);
 		}
 	}
