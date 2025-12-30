@@ -17,6 +17,7 @@ namespace Clock
 		FontDialog fontDialog;
 		ColorDialog FGColorDialog;
 		ColorDialog BGColorDialog;
+		AlarmDialog alarmDialog;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -28,6 +29,7 @@ namespace Clock
 			fontDialog = new FontDialog();
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
+			alarmDialog = new AlarmDialog();
 			LoadSettings();
 		}
 		private void SetVisibility(bool visible)
@@ -136,6 +138,11 @@ namespace Clock
 			fontDialog.Location = new Point(this.Location.X - fontDialog.Width - 10, this.Location.Y);
 			fontDialog.Font = TimeLabel.Font;
 			if (fontDialog.ShowDialog() == DialogResult.OK) TimeLabel.Font = fontDialog.Font;
+		}
+		private void tsmiAlarms_Click(object sender, EventArgs e)
+		{
+			alarmDialog.Location = new Point(this.Location.X - fontDialog.Width - 10, this.Location.Y);
+			alarmDialog.ShowDialog();
 		}
 		private void tsmiAutoStartup_CheckedChanged(object sender, EventArgs e)
 		{

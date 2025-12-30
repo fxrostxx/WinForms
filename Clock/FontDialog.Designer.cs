@@ -115,7 +115,7 @@
 			this.Name = "FontDialog";
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-			this.Text = "FontDialog";
+			this.Text = "Select font";
 			this.TopMost = true;
 			this.Load += new System.EventHandler(this.FontDialog_Load);
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).EndInit();
