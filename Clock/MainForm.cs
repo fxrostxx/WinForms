@@ -59,6 +59,8 @@ namespace Clock
 			writer.WriteLine(TimeLabel.ForeColor.ToArgb());
 			writer.WriteLine(TimeLabel.BackColor.ToArgb());
 			writer.WriteLine(tsmiAutoStartup.Checked);
+			for (int i = 0; i < alarmDialog.alarmsSettings.Count; ++i)
+				writer.WriteLine(alarmDialog.alarmsSettings[i].ToString());
 			writer.Close();
 		}
 		void LoadSettings()
@@ -80,6 +82,9 @@ namespace Clock
 				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				TimeLabel.BackColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				tsmiAutoStartup.Checked = Convert.ToBoolean(reader.ReadLine());
+				List<string> alarms = new List<string>();
+				while (!reader.EndOfStream) alarms.Add(reader.ReadLine());
+				alarmDialog = new AlarmDialog(alarms);
 				reader.Close();
 			}
 			else

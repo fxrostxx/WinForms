@@ -12,12 +12,20 @@ namespace Clock
 {
 	public partial class AlarmDialog : Form
 	{
+		public List<string> alarmsSettings { get; set; }
 		public AlarmDialog()
 		{
 			InitializeComponent();
+			alarmsSettings = new List<string>();
 			dateTimePicker.Format = DateTimePickerFormat.Custom;
 			checkedListBoxWeekdays.Enabled = false;
 			dateTimePicker.CustomFormat = "dd MMMM yyyy - HH:mm";
+		}
+		public AlarmDialog(List<string> alarms) : this()
+		{
+			alarmsSettings = alarms;
+			for (int i = 0; i < alarms.Count; ++i)
+				checkedListBoxAlarms.Items.Add(alarms[i].Split(';').Last(), Convert.ToBoolean(alarms[i].Split(';').First()));
 		}
 		private void AlarmDialog_Load(object sender, EventArgs e)
 		{
@@ -71,6 +79,18 @@ namespace Clock
 			if (checkedListBoxAlarms.SelectedIndex >= 0)
 				checkedListBoxAlarms.Items.RemoveAt(checkedListBoxAlarms.SelectedIndex);
 			else MessageBox.Show("Please select an alarm to remove", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+		}
+		private void buttonOK_Click(object sender, EventArgs e)
+		{
+			alarmsSettings.Clear();
+			for (int i = 0; i < checkedListBoxAlarms.Items.Count; ++i)
+				alarmsSettings.Add($"{checkedListBoxAlarms.GetItemChecked(i)};{checkedListBoxAlarms.Items[i].ToString()}");
+		}
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			checkedListBoxAlarms.Items.Clear();
+			for (int i = 0; i < alarmsSettings.Count; ++i)
+				checkedListBoxAlarms.Items.Add(alarmsSettings[i].Split(';').Last(), Convert.ToBoolean(alarmsSettings[i].Split(';').First()));
 		}
 	}
 }
