@@ -36,6 +36,9 @@
 			this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.checkedListBoxWeekdays = new System.Windows.Forms.CheckedListBox();
 			this.checkBoxByWeekday = new System.Windows.Forms.CheckBox();
+			this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.buttonChooseMelody = new System.Windows.Forms.Button();
+			this.labelMelody = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// checkedListBoxAlarms
@@ -43,13 +46,13 @@
 			this.checkedListBoxAlarms.FormattingEnabled = true;
 			this.checkedListBoxAlarms.Location = new System.Drawing.Point(12, 12);
 			this.checkedListBoxAlarms.Name = "checkedListBoxAlarms";
-			this.checkedListBoxAlarms.Size = new System.Drawing.Size(572, 123);
+			this.checkedListBoxAlarms.Size = new System.Drawing.Size(818, 123);
 			this.checkedListBoxAlarms.TabIndex = 0;
 			// 
 			// buttonCancel
 			// 
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(509, 371);
+			this.buttonCancel.Location = new System.Drawing.Point(755, 371);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 30);
 			this.buttonCancel.TabIndex = 5;
@@ -60,7 +63,7 @@
 			// buttonOK
 			// 
 			this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.buttonOK.Location = new System.Drawing.Point(428, 371);
+			this.buttonOK.Location = new System.Drawing.Point(674, 371);
 			this.buttonOK.Name = "buttonOK";
 			this.buttonOK.Size = new System.Drawing.Size(75, 30);
 			this.buttonOK.TabIndex = 4;
@@ -123,11 +126,32 @@
 			this.checkBoxByWeekday.UseVisualStyleBackColor = true;
 			this.checkBoxByWeekday.CheckedChanged += new System.EventHandler(this.checkBoxByWeekday_CheckedChanged);
 			// 
+			// buttonChooseMelody
+			// 
+			this.buttonChooseMelody.Location = new System.Drawing.Point(174, 371);
+			this.buttonChooseMelody.Name = "buttonChooseMelody";
+			this.buttonChooseMelody.Size = new System.Drawing.Size(119, 30);
+			this.buttonChooseMelody.TabIndex = 11;
+			this.buttonChooseMelody.Text = "Choose melody";
+			this.buttonChooseMelody.UseVisualStyleBackColor = true;
+			this.buttonChooseMelody.Click += new System.EventHandler(this.buttonChooseMelody_Click);
+			// 
+			// labelMelody
+			// 
+			this.labelMelody.AutoSize = true;
+			this.labelMelody.Location = new System.Drawing.Point(93, 242);
+			this.labelMelody.Name = "labelMelody";
+			this.labelMelody.Size = new System.Drawing.Size(58, 16);
+			this.labelMelody.TabIndex = 12;
+			this.labelMelody.Text = "Melody: ";
+			// 
 			// AlarmDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(596, 413);
+			this.ClientSize = new System.Drawing.Size(842, 413);
+			this.Controls.Add(this.labelMelody);
+			this.Controls.Add(this.buttonChooseMelody);
 			this.Controls.Add(this.checkBoxByWeekday);
 			this.Controls.Add(this.checkedListBoxWeekdays);
 			this.Controls.Add(this.dateTimePicker);
@@ -158,5 +182,8 @@
 		private System.Windows.Forms.DateTimePicker dateTimePicker;
 		private System.Windows.Forms.CheckedListBox checkedListBoxWeekdays;
 		private System.Windows.Forms.CheckBox checkBoxByWeekday;
+		private System.Windows.Forms.OpenFileDialog fileDialog;
+		private System.Windows.Forms.Button buttonChooseMelody;
+		private System.Windows.Forms.Label labelMelody;
 	}
 }
