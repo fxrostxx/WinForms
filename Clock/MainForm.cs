@@ -17,6 +17,7 @@ namespace Clock
 		FontDialog fontDialog;
 		ColorDialog FGColorDialog;
 		ColorDialog BGColorDialog;
+		AlarmsForm alarms;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -28,6 +29,7 @@ namespace Clock
 			fontDialog = new FontDialog();
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
+			alarms = new AlarmsForm();
 			LoadSettings();
 		}
 		private void SetVisibility(bool visible)
@@ -148,6 +150,10 @@ namespace Clock
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			SaveSettings();
+		}
+		private void tsmiAlarms_Click(object sender, EventArgs e)
+		{
+			alarms.ShowDialog();
 		}
 	}
 }
