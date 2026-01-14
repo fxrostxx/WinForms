@@ -55,6 +55,7 @@ namespace Clock
 		{
 			byte days = 0;
 			for (int i = 0; i < clbWeekdays.CheckedIndices.Count; ++i)
+				days |= (byte)(1 << clbWeekdays.CheckedIndices[i]);
 			return days;
 		}
 	}
