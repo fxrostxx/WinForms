@@ -21,7 +21,9 @@ namespace Clock
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
 			alarm.Location = new Point(this.Location.X + (this.Width - alarm.Width) / 2, this.Location.Y + (this.Height - alarm.Height) / 2);
-			alarm.ShowDialog();
+			if (alarm.ShowDialog() == DialogResult.OK)
+				listBoxAlarms.Items.Add(alarm.Alarm);
+
 		}
 	}
 }
