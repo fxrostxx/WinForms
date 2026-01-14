@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
 namespace Clock
@@ -53,7 +54,6 @@ namespace Clock
 			writer.WriteLine(tsmiShowSeconds.Checked);
 			writer.WriteLine(tsmiShowDate.Checked);
 			writer.WriteLine(tsmiShowWeekday.Checked);
-			writer.WriteLine(tsmiShowConsole.Checked);
 			writer.WriteLine(fontDialog.Filename);
 			writer.WriteLine(TimeLabel.Font.Size);
 			writer.WriteLine(TimeLabel.ForeColor.ToArgb());
@@ -74,7 +74,6 @@ namespace Clock
 				tsmiShowSeconds.Checked = Convert.ToBoolean(reader.ReadLine());
 				tsmiShowDate.Checked = Convert.ToBoolean(reader.ReadLine());
 				tsmiShowWeekday.Checked = Convert.ToBoolean(reader.ReadLine());
-				tsmiShowConsole.Checked = Convert.ToBoolean(reader.ReadLine());
 				fontDialog = new FontDialog(reader.ReadLine(), reader.ReadLine());
 				TimeLabel.Font = fontDialog.Font;
 				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
@@ -156,5 +155,14 @@ namespace Clock
 			alarms.Location = new Point(this.Location.X - alarms.Width - 10, this.Location.Y);
 			alarms.ShowDialog();
 		}
+		private void tsmiShowConsole_CheckedChanged(object sender, EventArgs e)
+		{
+			if ((sender as ToolStripMenuItem).Checked) AllocConsole();
+			else FreeConsole();
+		}
+		[DllImport("kernel32.dll")]
+		public static extern void AllocConsole();
+		[DllImport("kernel32.dll")]
+		public static extern void FreeConsole();
 	}
 }

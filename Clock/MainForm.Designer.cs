@@ -95,13 +95,13 @@
             this.toolStripSeparator6,
             this.tsmiExit});
 			this.ContextMenuStrip.Name = "ContextMenuStrip";
-			this.ContextMenuStrip.Size = new System.Drawing.Size(211, 332);
+			this.ContextMenuStrip.Size = new System.Drawing.Size(211, 354);
 			// 
 			// tsmiTopmost
 			// 
 			this.tsmiTopmost.CheckOnClick = true;
 			this.tsmiTopmost.Name = "tsmiTopmost";
-			this.tsmiTopmost.Size = new System.Drawing.Size(210, 24);
+			this.tsmiTopmost.Size = new System.Drawing.Size(210, 26);
 			this.tsmiTopmost.Text = "Topmost";
 			this.tsmiTopmost.Click += new System.EventHandler(this.tsmiTopmost_Click);
 			// 
@@ -109,7 +109,7 @@
 			// 
 			this.tsmiShowControls.CheckOnClick = true;
 			this.tsmiShowControls.Name = "tsmiShowControls";
-			this.tsmiShowControls.Size = new System.Drawing.Size(210, 24);
+			this.tsmiShowControls.Size = new System.Drawing.Size(210, 26);
 			this.tsmiShowControls.Text = "Show controls";
 			this.tsmiShowControls.CheckedChanged += new System.EventHandler(this.tsmiShowControls_CheckedChanged);
 			// 
@@ -122,7 +122,7 @@
 			// 
 			this.tsmiShowSeconds.CheckOnClick = true;
 			this.tsmiShowSeconds.Name = "tsmiShowSeconds";
-			this.tsmiShowSeconds.Size = new System.Drawing.Size(210, 24);
+			this.tsmiShowSeconds.Size = new System.Drawing.Size(210, 26);
 			this.tsmiShowSeconds.Text = "Show seconds";
 			this.tsmiShowSeconds.CheckedChanged += new System.EventHandler(this.tsmiShowSeconds_CheckedChanged);
 			// 
@@ -130,7 +130,7 @@
 			// 
 			this.tsmiShowDate.CheckOnClick = true;
 			this.tsmiShowDate.Name = "tsmiShowDate";
-			this.tsmiShowDate.Size = new System.Drawing.Size(210, 24);
+			this.tsmiShowDate.Size = new System.Drawing.Size(210, 26);
 			this.tsmiShowDate.Text = "Show date";
 			this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
 			// 
@@ -138,7 +138,7 @@
 			// 
 			this.tsmiShowWeekday.CheckOnClick = true;
 			this.tsmiShowWeekday.Name = "tsmiShowWeekday";
-			this.tsmiShowWeekday.Size = new System.Drawing.Size(210, 24);
+			this.tsmiShowWeekday.Size = new System.Drawing.Size(210, 26);
 			this.tsmiShowWeekday.Text = "Show weekday";
 			this.tsmiShowWeekday.CheckedChanged += new System.EventHandler(this.tsmiShowWeekday_CheckedChanged);
 			// 
@@ -151,8 +151,9 @@
 			// 
 			this.tsmiShowConsole.CheckOnClick = true;
 			this.tsmiShowConsole.Name = "tsmiShowConsole";
-			this.tsmiShowConsole.Size = new System.Drawing.Size(210, 24);
+			this.tsmiShowConsole.Size = new System.Drawing.Size(210, 26);
 			this.tsmiShowConsole.Text = "Show console";
+			this.tsmiShowConsole.CheckedChanged += new System.EventHandler(this.tsmiShowConsole_CheckedChanged);
 			// 
 			// toolStripSeparator3
 			// 
@@ -162,7 +163,7 @@
 			// tsmiSelectFont
 			// 
 			this.tsmiSelectFont.Name = "tsmiSelectFont";
-			this.tsmiSelectFont.Size = new System.Drawing.Size(210, 24);
+			this.tsmiSelectFont.Size = new System.Drawing.Size(210, 26);
 			this.tsmiSelectFont.Text = "Select font";
 			this.tsmiSelectFont.Click += new System.EventHandler(this.tsmiSelectFont_Click);
 			// 
@@ -172,7 +173,7 @@
             this.tsmiForegroundColor,
             this.tsmiBackgroundColor});
 			this.tsmiSelectColor.Name = "tsmiSelectColor";
-			this.tsmiSelectColor.Size = new System.Drawing.Size(210, 24);
+			this.tsmiSelectColor.Size = new System.Drawing.Size(210, 26);
 			this.tsmiSelectColor.Text = "Select color";
 			// 
 			// tsmiForegroundColor
@@ -197,7 +198,7 @@
 			// tsmiAlarms
 			// 
 			this.tsmiAlarms.Name = "tsmiAlarms";
-			this.tsmiAlarms.Size = new System.Drawing.Size(210, 24);
+			this.tsmiAlarms.Size = new System.Drawing.Size(210, 26);
 			this.tsmiAlarms.Text = "Alarms";
 			this.tsmiAlarms.Click += new System.EventHandler(this.tsmiAlarms_Click);
 			// 
@@ -210,7 +211,7 @@
 			// 
 			this.tsmiAutoStartup.CheckOnClick = true;
 			this.tsmiAutoStartup.Name = "tsmiAutoStartup";
-			this.tsmiAutoStartup.Size = new System.Drawing.Size(210, 24);
+			this.tsmiAutoStartup.Size = new System.Drawing.Size(210, 26);
 			this.tsmiAutoStartup.Text = "Auto startup";
 			this.tsmiAutoStartup.CheckedChanged += new System.EventHandler(this.tsmiAutoStartup_CheckedChanged);
 			// 
@@ -222,7 +223,7 @@
 			// tsmiExit
 			// 
 			this.tsmiExit.Name = "tsmiExit";
-			this.tsmiExit.Size = new System.Drawing.Size(210, 24);
+			this.tsmiExit.Size = new System.Drawing.Size(210, 26);
 			this.tsmiExit.Text = "Exit";
 			this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
 			// 
