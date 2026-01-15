@@ -15,9 +15,9 @@ namespace Clock
 		public override string ToString()
 		{
 			string info = "";
-			info += Date != DateTime.MinValue ? Date.ToString("dd.MM.yyyy") : "Каждый день";
+			string daysAlign = Days.ToString().Length < 9 ? "\t" : "";
+			info += Date != DateTime.MinValue ? Date.ToString("dd.MM.yyyy") : Days.DaysMask != 0 ? Days.ToString() + daysAlign : "Каждый день";
 			info += $"\t{Time.ToString("HH:mm:ss")}";
-			info += $"\t{Days}";
 			info += $"\t{Filename.Split('\\').Last()}";
 			return info;
 		}

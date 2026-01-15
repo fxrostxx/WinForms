@@ -10,6 +10,11 @@ namespace Clock
 	{
 		static readonly string[] WEEKDAYS_NAMES = { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
 		private byte days;
+		public byte DaysMask
+		{
+			get => days;
+			set { days = value; }
+		}
 		public Week(byte days)
 		{
 			this.days = days;
@@ -22,6 +27,7 @@ namespace Clock
 				byte day = (byte)(1 << i);
 				if ((this.days & day) != 0) days += $"{WEEKDAYS_NAMES[i]},";
 			}
+			days = days.Trim(',');
 			return days;
 		}
 	}

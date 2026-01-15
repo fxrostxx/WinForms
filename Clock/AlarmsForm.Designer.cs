@@ -41,6 +41,7 @@
 			this.listBoxAlarms.Name = "listBoxAlarms";
 			this.listBoxAlarms.Size = new System.Drawing.Size(755, 340);
 			this.listBoxAlarms.TabIndex = 0;
+			this.listBoxAlarms.DoubleClick += new System.EventHandler(this.listBoxAlarms_DoubleClick);
 			// 
 			// buttonAdd
 			// 
@@ -60,6 +61,7 @@
 			this.buttonRemove.TabIndex = 2;
 			this.buttonRemove.Text = "Remove";
 			this.buttonRemove.UseVisualStyleBackColor = true;
+			this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
 			// 
 			// AlarmsForm
 			// 
