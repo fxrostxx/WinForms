@@ -35,7 +35,7 @@ namespace Clock
 				clbWeekdays.Enabled = !checkBoxUseDate.Checked;
 				dtpDate.Value = Alarm.Date;
 			}
-			dtpTime.Value = Alarm.Time;
+			dtpTime.Value = DateTime.Now.Date + Alarm.Time;
 			Alarm.Days.Extract(clbWeekdays);
 			labelFilename.Text = Alarm.Filename;
 		}
@@ -77,7 +77,7 @@ namespace Clock
 		private void buttonOk_Click(object sender, EventArgs e)
 		{
 			Alarm.Date = checkBoxUseDate.Checked ? dtpDate.Value : DateTime.MinValue;
-			Alarm.Time = dtpTime.Value;
+			Alarm.Time = dtpTime.Value.TimeOfDay;
 			Alarm.Days = new Week(checkBoxUseDate.Checked ? (byte)0 : GetDaysMask());
 			Alarm.Filename = labelFilename.Text;
 		}

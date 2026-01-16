@@ -19,6 +19,7 @@ namespace Clock
 		ColorDialog FGColorDialog;
 		ColorDialog BGColorDialog;
 		AlarmsForm alarms;
+		Alarm alarm;
 		public MainForm()
 		{
 			InitializeComponent();
@@ -31,6 +32,7 @@ namespace Clock
 			FGColorDialog = new ColorDialog();
 			BGColorDialog = new ColorDialog();
 			alarms = new AlarmsForm();
+			alarm = null;
 			LoadSettings();
 		}
 		private void SetVisibility(bool visible)
@@ -95,7 +97,21 @@ namespace Clock
 			if (CheckBoxShowWeekday.Checked && CheckBoxShowDate.Checked)
 				TimeLabel.Text += $" {DateTime.Now.ToString("ddd")}";
 			else if (CheckBoxShowWeekday.Checked) TimeLabel.Text += $"\n{DateTime.Now.ToString("ddd")}";
+			if
+			(
+				alarm != null
+				&& alarm.Time.Hours == DateTime.Now.Hour
+				&& alarm.Time.Minutes == DateTime.Now.Minute
+				&& alarm.Time.Seconds == DateTime.Now.Second
+			)
+				MessageBox.Show(alarm.ToString());
+			if (DateTime.Now.Second % 5 == 0) alarm = FindNextAlarm();
 			NotifyIcon.Text = TimeLabel.Text;
+		}
+		Alarm FindNextAlarm()
+		{
+			Alarm[] actualAlarms = alarms.List.Items.Cast<Alarm>().Where(a => a.Time > DateTime.Now.TimeOfDay).ToArray();
+			return actualAlarms.Min();
 		}
 		private void ButtonHideControls_Click(object sender, EventArgs e)
 		{

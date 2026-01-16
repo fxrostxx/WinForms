@@ -17,7 +17,7 @@ namespace Clock
 			this.Filename = other.Filename;
 		}
 		public DateTime Date { get; set; }
-		public DateTime Time { get; set; }
+		public TimeSpan Time { get; set; }
 		public Week Days { get; set; }
 		public string Filename { get; set; }
 		public override string ToString()
@@ -25,7 +25,7 @@ namespace Clock
 			string info = "";
 			string daysAlign = Days.ToString().Length < 9 ? "\t" : "";
 			info += Date != DateTime.MinValue ? Date.ToString("dd.MM.yyyy") : Days.DaysMask != 0 ? Days.ToString() + daysAlign : "Каждый день";
-			info += $"\t{Time.ToString("HH:mm:ss")}";
+			info += $"\t{DateTime.Today.Add(Time).ToString("HH:mm:ss")}";
 			info += $"\t{Filename.Split('\\').Last()}";
 			return info;
 		}
