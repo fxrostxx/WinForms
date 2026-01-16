@@ -22,6 +22,23 @@ namespace Clock
 			dtpDate.Enabled = false;
 			Alarm = new Alarm();
 		}
+		public AlarmDialog(Alarm alarm) : this()
+		{
+			Alarm = alarm;
+			Extract();
+		}
+		private void Extract()
+		{
+			if (Alarm.Date != DateTime.MinValue)
+			{
+				checkBoxUseDate.Checked = true;
+				clbWeekdays.Enabled = !checkBoxUseDate.Checked;
+				dtpDate.Value = Alarm.Date;
+			}
+			dtpTime.Value = Alarm.Time;
+			Alarm.Days.Extract(clbWeekdays);
+			labelFilename.Text = Alarm.Filename;
+		}
 		private void checkBoxUseDate_CheckedChanged(object sender, EventArgs e)
 		{
 			dtpDate.Enabled = (sender as CheckBox).Checked;
@@ -66,29 +83,6 @@ namespace Clock
 			Alarm.Time = dtpTime.Value;
 			Alarm.Days = new Week(GetDaysMask());
 			Alarm.Filename = labelFilename.Text;
-		}
-		public void SetAlarm(Alarm alarm)
-		{
-			this.Alarm = new Alarm
-			{
-				Date = alarm.Date,
-				Time = alarm.Time,
-				Days = new Week(alarm.Days.DaysMask),
-				Filename = alarm.Filename
-			};
-			checkBoxUseDate.Checked = Alarm.Date != DateTime.MinValue;
-			dtpDate.Enabled = checkBoxUseDate.Checked;
-			clbWeekdays.Enabled = !dtpDate.Enabled;
-			if (dtpDate.Enabled) dtpDate.Value = Alarm.Date;
-			dtpTime.Value = Alarm.Time;
-			if (clbWeekdays.Enabled && Alarm.Days != null)
-			{
-				for (int i = 0; i < clbWeekdays.Items.Count; ++i) clbWeekdays.SetItemChecked(i, false);
-				byte daysMask = Alarm.Days.DaysMask;
-				for (int i = 0; i < 7; ++i)
-					clbWeekdays.SetItemChecked(i, Convert.ToBoolean(daysMask & (1 << i)));
-			}
-			labelFilename.Text = Alarm.Filename;
 		}
 	}
 }
