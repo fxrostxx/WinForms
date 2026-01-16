@@ -31,6 +31,7 @@ namespace Clock
 				AlarmDialog editAlarm = new AlarmDialog(listBoxAlarms.SelectedItem as Alarm);
 				editAlarm.Location = new Point(this.Location.X + (this.Width - editAlarm.Width) / 2, this.Location.Y + (this.Height - editAlarm.Height) / 2);
 				editAlarm.ShowDialog();
+				listBoxAlarms.Items[listBoxAlarms.SelectedIndex] = new Alarm(editAlarm.Alarm);
 			}
 			else buttonAdd_Click(sender, e);
 		}

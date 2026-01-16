@@ -47,10 +47,7 @@ namespace Clock
 
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
-			if (fileDialog.ShowDialog() == DialogResult.OK)
-			{
-				labelFilename.Text = fileDialog.FileName;
-			}
+			if (fileDialog.ShowDialog() == DialogResult.OK) labelFilename.Text = fileDialog.FileName;
 		}
 		private void clbWeekdays_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -81,7 +78,7 @@ namespace Clock
 		{
 			Alarm.Date = checkBoxUseDate.Checked ? dtpDate.Value : DateTime.MinValue;
 			Alarm.Time = dtpTime.Value;
-			Alarm.Days = new Week(GetDaysMask());
+			Alarm.Days = new Week(checkBoxUseDate.Checked ? (byte)0 : GetDaysMask());
 			Alarm.Filename = labelFilename.Text;
 		}
 	}
