@@ -22,7 +22,7 @@ namespace Clock
 		{
 			alarm.Location = new Point(this.Location.X + (this.Width - alarm.Width) / 2, this.Location.Y + (this.Height - alarm.Height) / 2);
 			if (alarm.ShowDialog() == DialogResult.OK)
-				listBoxAlarms.Items.Add(alarm.Alarm);
+				listBoxAlarms.Items.Add(new Alarm(alarm.Alarm));
 
 		}
 		private void listBoxAlarms_DoubleClick(object sender, EventArgs e)

@@ -8,6 +8,14 @@ namespace Clock
 {
 	public class Alarm
 	{
+		public Alarm() { }
+		public Alarm(Alarm other)
+		{
+			this.Date = other.Date;
+			this.Time = other.Time;
+			this.Days = other.Days;
+			this.Filename = other.Filename;
+		}
 		public DateTime Date { get; set; }
 		public DateTime Time { get; set; }
 		public Week Days { get; set; }
