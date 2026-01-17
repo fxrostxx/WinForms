@@ -34,6 +34,7 @@ namespace Clock
 			alarms = new AlarmsForm();
 			alarm = null;
 			LoadSettings();
+			LoadAlarmsSettings();
 		}
 		private void SetVisibility(bool visible)
 		{
@@ -63,6 +64,14 @@ namespace Clock
 			writer.WriteLine(tsmiAutoStartup.Checked);
 			writer.Close();
 		}
+		private void SaveAlarmsSettings()
+		{
+			Directory.SetCurrentDirectory(Application.StartupPath + "\\..\\..\\");
+			StreamWriter writer = new StreamWriter("alarms.ini");
+			for (int i = 0; i < alarms.List.Items.Count; ++i)
+				writer.WriteLine((alarms.List.Items[i] as Alarm).ToSettingsString());
+			writer.Close();
+		}
 		void LoadSettings()
 		{
 			Directory.SetCurrentDirectory(Application.StartupPath + "\\..\\..\\");
@@ -81,6 +90,27 @@ namespace Clock
 				TimeLabel.ForeColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				TimeLabel.BackColor = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				tsmiAutoStartup.Checked = Convert.ToBoolean(reader.ReadLine());
+				reader.Close();
+			}
+			else
+			{
+				SetVisibility(false);
+				this.TopMost = tsmiTopmost.Checked = true;
+			}
+		}
+		void LoadAlarmsSettings()
+		{
+			Directory.SetCurrentDirectory(Application.StartupPath + "\\..\\..\\");
+			if (File.Exists("alarms.ini"))
+			{
+				StreamReader reader = new StreamReader("alarms.ini");
+				string settings;
+				Alarm alarm;
+				while ((settings = reader.ReadLine()) != null)
+				{
+					alarm = new Alarm(settings);
+					alarms.List.Items.Add(alarm);
+				}
 				reader.Close();
 			}
 			else
@@ -165,6 +195,7 @@ namespace Clock
 		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			SaveSettings();
+			SaveAlarmsSettings();
 		}
 		private void tsmiAlarms_Click(object sender, EventArgs e)
 		{
