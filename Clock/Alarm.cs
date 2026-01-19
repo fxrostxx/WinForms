@@ -16,10 +16,22 @@ namespace Clock
 			this.Days = other.Days;
 			this.Filename = other.Filename;
 		}
+		public Alarm(string settings)
+		{
+			string[] parts = settings.Split('|');
+			this.Date = DateTime.Parse(parts[0]);
+			this.Time = TimeSpan.Parse(parts[1]);
+			this.Days = new Week(byte.Parse(parts[2]));
+			this.Filename = parts[3];
+		}
 		public DateTime Date { get; set; }
 		public TimeSpan Time { get; set; }
 		public Week Days { get; set; }
 		public string Filename { get; set; }
+		public string ToSettingsString()
+		{
+			return $"{Date.ToString("dd.MM.yyyy")}|{Time.ToString()}|{Days.DaysMask}|{Filename}";
+		}
 		public override string ToString()
 		{
 			string info = "";
