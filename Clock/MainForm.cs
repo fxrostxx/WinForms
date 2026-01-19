@@ -113,11 +113,6 @@ namespace Clock
 				}
 				reader.Close();
 			}
-			else
-			{
-				SetVisibility(false);
-				this.TopMost = tsmiTopmost.Checked = true;
-			}
 		}
 		private void Timer_Tick(object sender, EventArgs e)
 		{
