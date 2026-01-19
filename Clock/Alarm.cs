@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clock
 {
-	public class Alarm
+	public class Alarm : IComparable<Alarm>
 	{
 		public Alarm() { }
 		public Alarm(Alarm other)
@@ -23,6 +23,10 @@ namespace Clock
 			this.Time = TimeSpan.Parse(parts[1]);
 			this.Days = new Week(byte.Parse(parts[2]));
 			this.Filename = parts[3];
+		}
+		public int CompareTo(Alarm other)
+		{
+			return this.Time.CompareTo(other.Time);
 		}
 		public DateTime Date { get; set; }
 		public TimeSpan Time { get; set; }
