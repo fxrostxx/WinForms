@@ -105,12 +105,8 @@ namespace Clock
 			{
 				StreamReader reader = new StreamReader("alarms.ini");
 				string settings;
-				Alarm alarm;
 				while ((settings = reader.ReadLine()) != null)
-				{
-					alarm = new Alarm(settings);
-					alarms.List.Items.Add(alarm);
-				}
+					alarms.List.Items.Add(new Alarm(settings));
 				reader.Close();
 			}
 		}
