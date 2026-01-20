@@ -20,6 +20,7 @@ namespace Clock
 			fileDialog = new OpenFileDialog();
 			fileDialog.Filter = "All audiofiles|*.wav;*.mp3;*.flac;*.wma|" + "WAV files (*.wav)|*.wav|" + "MP3 files (*.mp3)|*.mp3|" + "FLAC files (*.flac)|*.flac|" + "WMA files (*.wma)|*.wma";
 			dtpDate.Enabled = false;
+			dtpDate.MinDate = DateTime.Now.Date;
 			Alarm = new Alarm();
 			for (int i = 0; i < 7; ++i) clbWeekdays.SetItemChecked(i, true);
 		}
@@ -77,10 +78,22 @@ namespace Clock
 		}
 		private void buttonOk_Click(object sender, EventArgs e)
 		{
+			if (!checkBoxUseDate.Checked && clbWeekdays.CheckedIndices.Count == 0)
+			{
+				MessageBox.Show("Select at least one weekday", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (labelFilename.Text == "File:")
+			{
+				MessageBox.Show("Select melody", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 			Alarm.Date = checkBoxUseDate.Checked ? dtpDate.Value : DateTime.MinValue;
 			Alarm.Time = dtpTime.Value.TimeOfDay;
 			Alarm.Days = new Week(GetDaysMask());
 			Alarm.Filename = labelFilename.Text;
+			this.DialogResult = DialogResult.OK;
+			this.Close();
 		}
 	}
 }
