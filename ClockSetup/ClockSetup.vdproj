@@ -202,7 +202,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
                 }
@@ -226,7 +226,7 @@
             "SourcePath" = "8:Interop.WMPLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_DEF9353B8E49411089A9EA16123C35F8"
+            "Folder" = "8:_2CE6A66230CD40FCAD17416E4745B23B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -246,7 +246,7 @@
             "SourcePath" = "8:wmp.dll"
             "TargetName" = "8:wmp.dll"
             "Tag" = "8:"
-            "Folder" = "8:_DEF9353B8E49411089A9EA16123C35F8"
+            "Folder" = "8:_2CE6A66230CD40FCAD17416E4745B23B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -417,7 +417,7 @@
             "SourcePath" = "8:AxInterop.WMPLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_DEF9353B8E49411089A9EA16123C35F8"
+            "Folder" = "8:_2CE6A66230CD40FCAD17416E4745B23B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -488,7 +488,7 @@
             "SourcePath" = "8:..\\Clock\\bin\\Debug\\Clock.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_DEF9353B8E49411089A9EA16123C35F8"
+            "Folder" = "8:_2CE6A66230CD40FCAD17416E4745B23B"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -541,6 +541,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_078A3254CCC14134AD0155AC69720364"
+                    {
+                    "Name" = "8:bin"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_A7B75158917C419DA879CC97312E673B"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_2CE6A66230CD40FCAD17416E4745B23B"
+                            {
+                            "Name" = "8:Debug"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_24B589AF934C4C17B9E09F0D7E2E3F37"
+                                "Folders"
+                                {
+                                }
+                            }
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_0D374ED6C196459FAC7A4F1FAF47CBC4"
                     {
                     "Name" = "8:Fonts"
@@ -582,7 +604,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Clock"
         "ProductCode" = "8:{884AA0DE-623F-4C28-BF3C-C52FD55BC6C3}"
-        "PackageCode" = "8:{162D2C56-D479-4D21-8978-29B9B13BFB9F}"
+        "PackageCode" = "8:{A04C5D29-3AC3-4FAF-91E0-9145E8CF0394}"
         "UpgradeCode" = "8:{C8F0FF66-79D0-431D-AA9D-C5EDE5AD849A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
