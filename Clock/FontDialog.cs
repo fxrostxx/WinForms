@@ -41,8 +41,7 @@ namespace Clock
 		}
 		void LoadFonts(string extension)
 		{
-			string currentDir = Application.StartupPath;
-			Directory.SetCurrentDirectory($"{currentDir}\\..\\..\\Fonts");
+			Directory.SetCurrentDirectory($"{Application.StartupPath}\\..\\..\\Fonts");
 			//MessageBox.Show
 			//	(
 			//	this,
@@ -60,6 +59,7 @@ namespace Clock
 		}
 		void SetFont()
 		{
+			Directory.SetCurrentDirectory($"{Application.StartupPath}\\..\\..\\Fonts");
 			PrivateFontCollection pfc = new PrivateFontCollection();
 			pfc.AddFontFile(comboBoxFont.SelectedItem.ToString());
 			labelExample.Font = new Font(pfc.Families[0], (float)numericUpDownFontSize.Value);
