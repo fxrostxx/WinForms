@@ -99,8 +99,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C4F39C56C843469C9DF25923A0FE25A1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9E2F2A4B80BD4AB1BED5809CEA32C6E8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C4F39C56C843469C9DF25923A0FE25A1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -187,6 +199,21 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_B4B878E8938C42B4B6C6E1A4284DD577"
+            {
+            "Name" = "8:RightsChange.exe"
+            "Condition" = "8:"
+            "Object" = "8:_C4F39C56C843469C9DF25923A0FE25A1"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_D934E956_9F7B_433D_843E_76CD76C9B785"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            "Run64Bit" = "11:TRUE"
+            }
         }
         "DefaultFeature"
         {
@@ -503,6 +530,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C4F39C56C843469C9DF25923A0FE25A1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RightsChange, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_C4F39C56C843469C9DF25923A0FE25A1"
+                    {
+                    "Name" = "8:RightsChange.exe"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\RightsChange\\bin\\Debug\\RightsChange.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_2CE6A66230CD40FCAD17416E4745B23B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -604,7 +662,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Clock"
         "ProductCode" = "8:{884AA0DE-623F-4C28-BF3C-C52FD55BC6C3}"
-        "PackageCode" = "8:{CE20DFB4-1015-4EF2-BFFA-F386C5E1F3DE}"
+        "PackageCode" = "8:{AC8456ED-ADD9-4DC5-AB83-793D06A3F508}"
         "UpgradeCode" = "8:{C8F0FF66-79D0-431D-AA9D-C5EDE5AD849A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

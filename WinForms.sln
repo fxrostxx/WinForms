@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock", "Clock\Clock.csproj
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClockSetup", "ClockSetup\ClockSetup.vdproj", "{3463BC7A-BE01-AE0C-1945-5E13E2087DD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightsChange", "RightsChange\RightsChange.csproj", "{A23FF07A-B0D6-4956-864C-858EB6179D62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,18 @@ Global
 		{3463BC7A-BE01-AE0C-1945-5E13E2087DD9}.Release|x64.Build.0 = Release
 		{3463BC7A-BE01-AE0C-1945-5E13E2087DD9}.Release|x86.ActiveCfg = Release
 		{3463BC7A-BE01-AE0C-1945-5E13E2087DD9}.Release|x86.Build.0 = Release
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Debug|x64.Build.0 = Debug|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Debug|x86.Build.0 = Debug|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Release|x64.ActiveCfg = Release|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Release|x64.Build.0 = Release|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Release|x86.ActiveCfg = Release|Any CPU
+		{A23FF07A-B0D6-4956-864C-858EB6179D62}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
