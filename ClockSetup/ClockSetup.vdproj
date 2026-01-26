@@ -187,21 +187,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_0A9C8E1D131945B5B5FC24CA1568A938"
-            {
-            "Name" = "8:Clock.exe"
-            "Condition" = "8:NOT Installed"
-            "Object" = "8:_9E2F2A4B80BD4AB1BED5809CEA32C6E8"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_1AB80A0B_C8C2_4D4F_B09B_0B53ECD8ABB1"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            "Run64Bit" = "11:TRUE"
-            }
         }
         "DefaultFeature"
         {
